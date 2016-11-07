@@ -6,7 +6,7 @@ define("ACAO", $_GET['acao']);
 //print_r($controle);
 $acao = $_GET['acao'];
 
-require_once "../controller/Controller.php";
+require_once "../model/Controller.php";
 require_once "../controller/$controle.php";
 
 
