@@ -1,5 +1,5 @@
 <?php
-    class UsuarioController extends Controller {
+    class PacienteController extends Controller {
 
         public function cadastrar() {
 
@@ -12,7 +12,7 @@
         public function listar() {
 
         }
-        
+
         public function deletar() {
 
         }
