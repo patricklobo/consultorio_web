@@ -16,16 +16,16 @@ require_once '../model/Conexao.php';
         // echo "testando";
         $dados = $this->post();
         debug($dados);
-        // if($dados){
-        //     $agendamento = new Agendamento();
-        //     $novo_agendamento = $agendamento->setAgendamento($dados);
-        //     if (!empty($novo_agendamento)){
-        //         echo "<script>alert('Consulta agendada!.');</script>";
-        //         echo "<meta http-equiv='refresh' content='0, url=?controle=agendamento&acao=listar'>";
-        //     }else{
-        //         echo "erro ao cadastrar";
-        //     }
-        // }
+        if($dados){
+            $agendamento = new Agendamento();
+            $novo_agendamento = $agendamento->setAgendamento($dados);
+            if (!empty($novo_agendamento)){
+                echo "<script>alert('Consulta agendada!.');</script>";
+                echo "<meta http-equiv='refresh' content='0, url=?controle=agendamento&acao=listar'>";
+            }else{
+                echo "erro ao cadastrar";
+            }
+        }
         $this->show();
       }
 

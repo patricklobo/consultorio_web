@@ -29,7 +29,7 @@ require_once '../model/Usuario.php';
          * Editar completo, inclusive sua senha
          */
         public function editar(){
-            $id = $_GET['id'];
+          //  $id = $_GET['id'];
           //  debug($id);
             $usuario = new Usuario();
             $this->lista_usuarios = $usuario->getUsuario();
@@ -39,7 +39,8 @@ require_once '../model/Usuario.php';
                 $id = @$_GET['id'];
             endforeach;
 
-            $this->lista_usuarios2 = $usuario->getUsuarioUni($id);
+            //$this->lista_usuarios2 = array();
+            $this->usuarios2 = $usuario->getUsuarioUni($id);
             $this->show();
             $dados = $this->post();
             if ($dados) {

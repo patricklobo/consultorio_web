@@ -27,7 +27,7 @@ class Usuario {
 
 
     public function getUsuarioUni($id) {
-      $this->sql = "SELECT `id`, `nome`, `email`, `senha` FROM `usuario` WHERE `id` = '$id' ";
+      $this->sql = "SELECT id, nome, email, senha FROM usuario WHERE id = '$id' ";
       $this->conexao->execSQL($this->sql);
       $usuario1= [];
       while ($row = $this->conexao->listarResultados()) {
@@ -46,19 +46,5 @@ class Usuario {
      $this->conexao->execSQL($this->sql);
    }
 
-
-
-
-
- public function mostrarUsuario($idedit){
-        $this->sql = "SELECT id, nome, senha FROM usuario WHERE id='$idedit'";
-        $this->conexao->execSQL($this->sql);
-        $listae = [];
-        while ($row = $this->conexao->listarResultados()) {
-            $listae[] = $row;
-        }
-        return $listae;
-    }
-
-}
+ }
 ?>

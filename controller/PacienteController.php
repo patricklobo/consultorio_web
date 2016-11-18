@@ -45,7 +45,7 @@ class PacienteController extends Controller
             echo "<meta http-equiv='refresh' content='0, url=?controle=paciente&acao=listar'>";
             echo "<script>alert('Paciente alterado com sucesso.');</script>";
         } else {
-            echo "";
+            echo "ERRO!";
         }
 
     }
