@@ -32,22 +32,41 @@ require_once '../model/Usuario.php';
             $id = $_GET['id'];
           //  debug($id);
             $usuario = new Usuario();
-            $usuarioUni = $usuario->getUsuarioUni($id);
-            debug($usuarioUni);
-            //debug($usuario);
+            $this->lista_usuarios = $usuario->getUsuario();
+          //  debug($lista_usuarios);
+
+            foreach ($this->lista_usuarios as $usuarios):
+                $id = @$_GET['id'];
+            endforeach;
+
+            $this->lista_usuarios2 = $usuario->getUsuarioUni($id);
             $this->show();
             $dados = $this->post();
-            debug($dados);
-             if ($dados) {
-                 $usuario = new Usuario();
-                 $usuario->update($dados);
-                 echo "<script>alert('Usuario alterado com sucesso.');</script>";
-                 echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=editar'>";
-
-             }else{
-               echo "ERRO!";
-             }
+            if ($dados) {
+                $usuario = new Usuario();
+                $usuario->update($dados);
+                echo "<meta http-equiv='refresh' content='0, url=?controle=paciente&acao=listar'>";
+                echo "<script>alert('Paciente alterado com sucesso.');</script>";
+            } else {
+                echo "";
+            }
           }
+            // $usuarioUni = $usuario->getUsuarioUni($id);
+            // debug($usuarioUni);
+            // //debug($usuario);
+            // $this->show();
+            // $dados = $this->post();
+            // debug($dados);
+            //  if ($dados) {
+            //      $usuario = new Usuario();
+            //      $usuario->update($dados);
+            //      echo "<script>alert('Usuario alterado com sucesso.');</script>";
+            //      echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=editar'>";
+            //
+            //  }else{
+            //    echo "ERRO!";
+            //  }
+          //}
 
 
 
@@ -64,7 +83,7 @@ require_once '../model/Usuario.php';
            $usuario = new Usuario();
            //debug($usuario);
            $id = $_GET['id'];
-           debug($id);
+           //debug($id);
            $usuario->excluir($id);
            $this->show();
         }

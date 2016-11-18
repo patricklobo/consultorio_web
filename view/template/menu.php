@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="?controle=agendamento&acao=listar">Agendamentos</span></a></li>
                 <li><a href="#">Especialidades</a></li>
-                <li><a href="#">Exemplo1</a></li>
+                <li><a href="?controle=paciente&acao=listar">Pacientes</a></li>
                 <li><a href="#">exemplo2</a></li>
                 <li><a href="?controle=usuario&acao=listar">Usuarios</a></li>
             </ul>
