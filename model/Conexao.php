@@ -26,7 +26,7 @@ class Conexao {
      * @param <Sting> $pass A senha, que por padrão a senha vazia.
      * @param <Sting> $banco Nome do banco de dados ao qual vai se conectar.
      */
-    public function __construct($nomeHost = "localhost", $user = "root", $pass = "", $banco = "consultorioweb") {
+    public function __construct($nomeHost = "localhost", $user = "root", $pass = "12345", $banco = "consultorio_web") {
         $this->nomeHost = $nomeHost;
         $this->user = $user;
         $this->pass = $pass;

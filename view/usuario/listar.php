@@ -61,7 +61,7 @@
                         <?=$usuario['alterado']?>
                     </td>
                     <td>
-                      <a href="?controle=usuario&acao=editar&id=<?=$usuario['id']?>">
+                      <a href="?controle=usuario&acao=editar&idedit=<?=$usuario['id']?>">
                         <span class="icon-editar glyphicon glyphicon-edit" aria-hidden="true"></span>
                     </a>
                     </td>

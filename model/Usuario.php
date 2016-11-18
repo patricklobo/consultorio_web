@@ -9,11 +9,11 @@ class Usuario {
 
 
   public function getUsuario(){
-    $this->sql = "SELECT `id`, `nome`, `email`, `senha`, `criado`, `alterado` FROM usuario";
-    $this->conexao->execSQL($this->sql);
-    $lista = [];
-    while($row = $this->conexao->listarResultados()){
-      $lista[] = $row;
+      $this->sql = "SELECT id, nome, email, senha, criado, alterado FROM usuario";
+      $this->conexao->execSQL($this->sql);
+      $lista = [];
+      while ($row = $this->conexao->listarResultados()) {
+          $lista[] = $row;
       }
       return $lista;
     }
@@ -22,18 +22,18 @@ class Usuario {
     public function setUsuario($usuario) {
      $this->sql = "INSERT INTO `usuario`(`nome`, `email`, `senha`) VALUES ('$usuario->nome', '$usuario->email', '".sha1($usuario->senha)."')";
      $this->conexao->execSQL($this->sql);
-     return $this->conexao->getId();
+     //return $this->conexao->getId();
      }
 
 
-    public function getUsuarioUni($id) {
-      $this->sql = "SELECT `id`, `nome`, `email`, `senha` FROM `usuario` WHERE `id` = '$id' ";
-      $this->conexao->execSQL($this->sql);
-      $usuario1= [];
-      while ($row = $this->conexao->listarResultados()) {
-         $usuario1[] = $row;
-      }
-      return $usuario1;
+    public function getUsuarioUni($idedit) {
+        $this->sql = "SELECT id, nome, email, senha, criado, alterado FROM usuario WHERE id='$idedit'";
+        $this->conexao->execSQL($this->sql);
+        $listae = [];
+        while ($row = $this->conexao->listarResultados()) {
+            $listae[] = $row;
+        }
+        return $listae;
     }
 
     public function excluir($id){

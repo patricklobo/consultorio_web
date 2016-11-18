@@ -29,24 +29,25 @@ require_once '../model/Usuario.php';
          * Editar completo, inclusive sua senha
          */
         public function editar(){
-            $id = $_GET['id'];
-          //  debug($id);
-            $usuario = new Usuario();
-            $usuarioUni = $usuario->getUsuarioUni($id);
-            debug($usuarioUni);
-            //debug($usuario);
+            $usuariomostrar = new Usuario();
+            $this->lista_usuario = $usuariomostrar->getUsuario();
+
+            foreach ($this->lista_usuario as $usuario):
+                $idedit = @$_GET['idedit'];
+            endforeach;
+
+            $this->lista_usuario2 = $usuariomostrar->getUsuarioUni($idedit);
             $this->show();
             $dados = $this->post();
-            debug($dados);
-             if ($dados) {
-                 $usuario = new Usuario();
-                 $usuario->update($dados);
-                 echo "<script>alert('Usuario alterado com sucesso.');</script>";
-                 echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=editar'>";
+            if ($dados) {
+                $paciente = new Paciente();
+                $paciente->execUpdatePaciente($dados);
+                echo "<meta http-equiv='refresh' content='0, url=?controle=paciente&acao=listar'>";
+                echo "<script>alert('Paciente alterado com sucesso.');</script>";
+            } else {
+                echo "";
+            }
 
-             }else{
-               echo "ERRO!";
-             }
           }
 
 
