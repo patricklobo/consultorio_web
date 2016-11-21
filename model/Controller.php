@@ -1,5 +1,4 @@
 <?php
-
 class Controller {
 
 
@@ -7,49 +6,37 @@ class Controller {
         require_once "../view/".CONTROLE."/".ACAO.".php";
     }
 
+    ////////////////////////////////////////////////////////////////////////
 
-    public static function converte_objeto($array) {
+    public static function converte_objeto($array)
+    {
         if(!function_exists("array_to_obj")){
-            function array_to_obj($array, &$obj) {
-                foreach ($array as $key => $value) {
-                    if (is_array($value)) {
+            function array_to_obj($array, &$obj)
+            {
+                foreach ($array as $key => $value)
+                {
+                    if (is_array($value))
+                    {
                         $obj->$key = new \stdClass();
                         array_to_obj($value, $obj->$key);
-                    }else{
+                    }
+                    else
+                    {
                         $obj->$key = $value;
                     }
                 }
                 return $obj;
-           }
+            }
         }
         $object= new \stdClass();
         return array_to_obj($array,$object);
     }
 
-
-
-    public function post(){
-       if(!empty($_POST)) return Controller::converte_objeto($_POST);
-    else false;
-   }
-
-   public function lista(){
-     if(!empty($lista)) return Controller::converte_objeto($lista);
-     return $lista;
-   }
-
-
-
-   public function dataTimeStampToFormatoBrasil($data) {
-        if($data == "0000-00-00 00:00:00"){
-          return "--/--/---- --:--:--";
-        }
-        else
-        {
-          $hora = date("H:i", strtotime($data));
-          $ndata = implode("/", array_reverse(explode("-", date("Y-m-d", strtotime($data)))));
-          return $ndata." ".$hora;
-        }
-
+    public function post()
+    {
+        if(!empty($_POST)) return Controller::converte_objeto($_POST);
+        else false;
     }
+
+
 }

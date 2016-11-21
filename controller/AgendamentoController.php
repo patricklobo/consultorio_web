@@ -1,43 +1,73 @@
 <?php
+
 require_once '../model/Agendamento.php';
-require_once '../model/Conexao.php';
+require_once '../model/Paciente.php';
+require_once '../model/Alerta.php';
 
- class AgendamentoController extends Controller{
+class AgendamentoController extends Controller
+{
 
-      public function listar(){
-        $agendamento = new Agendamento();
-        //debug($usuario);
-        $this->lista_agendamentos = $agendamento->getAgendamento();
-        //debug($this->lista_usuarios);
-         $this->show();
-      }
-
-      public function cadastrar(){
-        // echo "testando";
+    public function cadastrar()
+    {
+        $alerta = new Alerta();
         $dados = $this->post();
-        debug($dados);
-        // if($dados){
-        //     $agendamento = new Agendamento();
-        //     $novo_agendamento = $agendamento->setAgendamento($dados);
-        //     if (!empty($novo_agendamento)){
-        //         echo "<script>alert('Consulta agendada!.');</script>";
-        //         echo "<meta http-equiv='refresh' content='0, url=?controle=agendamento&acao=listar'>";
-        //     }else{
-        //         echo "erro ao cadastrar";
-        //     }
-        // }
+        if ($dados) {
+            $agendamento = new Agendamento();
+            $novo_agendamento = $dados;//$agendamento->cadAgendamento($dados);
+
+            if (empty($novo_agendamento->data) || (empty($novo_agendamento->hora) || (empty($novo_agendamento->idpaciente)))) {
+                $alerta->alertaCamposvazios();
+            } else {
+                $agendamento->cadAgendamento($dados);
+                $alerta->alertaCadConsulta();
+            }
+        }
         $this->show();
-      }
 
-
-    public function deletar($id){
-      $agendamento = new Agendamento();
-      //debug($usuario);
-      $id = $_GET['id'];
-      debug($id);
-      $agendamento->deletar($id);
-      $this->show();
     }
 
+    public function deletar()
+    {
+
+
+
+    }
+
+    public function listar()
+    {
+
+        $agendamento = new Agendamento();
+        $this->lista_agendamentos = $agendamento->getAgendamento();
+        $this->show();
+
+
+    }
+
+    public function alterar()
+    {
+
+
+
+    }
+
+    public function buscar() {
+
+        $dados = $this->post();
+        $alerta = new Alerta();
+        if ($dados){
+            $agendamento = new Agendamento();
+            if (empty($dados->consultapesquisa)) {
+                $alerta->alertaCamposvazios();
+            } else {
+                $this->lista_resultado = $agendamento->getAgendamentoUni($dados);
+            }
+        }
+
+
+        $this->show();
+
+
+    }
+
+
 }
-?>

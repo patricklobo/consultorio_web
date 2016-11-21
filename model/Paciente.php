@@ -63,10 +63,17 @@ private $sql = null;
 
     }
 
-    public function getPacienteUniAg() {
+    public function getPacienteSelect() {
         $this->sql = "SELECT id, nome FROM paciente";
-        $result = $this->conexao->execSQL($this->sql);
-        return $result;
+        $this->conexao->execSQL($this->sql);
+        $lista = [];
+        while ($row = $this->conexao->listarResultados()) {
+            $lista[] = $row;
+        }
+        return $lista;
+        //$result = $this->conexao->execSQL($this->sql);
+        //$row = mysql_fetch_array($result);
+        //return $row;
 
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-$paciente = new PacienteController();
+//$paciente = new PacienteController();
 
 
 ?>

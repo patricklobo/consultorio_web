@@ -66,7 +66,7 @@ class Conexao {
      */
     public function execSQL($sql) {
         $this->query = mysqli_query($this->conexao, $sql) or die
-                        (/*"<b><center>Erro ao Executar o Query: $sql - </b></center><br />" .*/"<script> alert(\"Ocorreu um erro no acesso ao banco de dados \\nErro:\\n". mysqli_error($this->conexao)."\");</script>");
+        (/*"<b><center>Erro ao Executar o Query: $sql - </b></center><br />" .*/"<script> alert(\"Ocorreu um erro no acesso ao banco de dados \\nErro:\\n". mysqli_error($this->conexao)."\");</script>". "<script>alert(''); history.back();</script>");
         $this->id = mysqli_insert_id($this->conexao);
         return $this->query;
     }
@@ -82,6 +82,11 @@ class Conexao {
         //obtém um linha do resultado como uma matriz associativa.
         return mysqli_fetch_assoc($this->query);
     }
+
+
+    /*public function listarPacienteedit(){
+        return mysql_fetch_array($this->query);
+    }*/
 
     /**
      * FUNÇÃO QUE RETORNA A QUANTIDADE DE LINHAS QUE TEM NA INSTRUÇÃO SQL QUE FOI

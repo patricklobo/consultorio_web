@@ -1,15 +1,4 @@
 <?php
-require_once '../model/Conexao.php';
-require_once '../model/Usuario.php';
-
-function debug($array){
-  echo "<pre>";
-  print_r($array);
-  echo "</pre>";
-}
-
-
-
 $controle = $_GET['controle']."Controller";
 define("CONTROLE", $_GET['controle']);
 define("ACAO", $_GET['acao']);

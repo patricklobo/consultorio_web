@@ -22,6 +22,7 @@ class PessoaController extends Controller
 
     public function deletar()
     {
+        $this->show();
 
     }
 	
