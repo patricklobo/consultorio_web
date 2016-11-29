@@ -1,6 +1,3 @@
-
-
-
 <div class="panel panel-default">
     <div class="panel-heading">
       <ul class="nav navbar-nav">
@@ -11,11 +8,6 @@
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </a>
       </ul>
-
-
-        <a href="?controle=agendamento&acao=cadastrar">
-          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-      </a>
     </div>
     <div class="panel-body">
         <table class="table table-hover">
@@ -79,7 +71,7 @@
                         <?=$agendamento['alterado']?>
                     </td>
                     <td>
-                      <a href="?controle=usuario&acao=editar&id=<?=$usuario['id']?>">
+                      <a href="?controle=agendamento&acao=editar&id=<?=$agendamento['id']?>">
                         <span class="icon-editar glyphicon glyphicon-edit" aria-hidden="true"></span>
                     </a>
                     </td>

@@ -1,8 +1,26 @@
 <?php
+require_once '../model/Sessao.php';
 require_once '../model/Conexao.php';
 require_once '../model/Usuario.php';
 
     class UsuarioController extends Controller {
+
+       public function login(){
+        //  //$this->show();
+         $this->sessao = new Sessao();
+        //  $usuario = $_POST['nome'];
+        //  $senha = $_POST['senha'];
+        //  if(!empty($_POST)){
+        //    if($this->sessao->login($usuario, $senha)){
+        //      header("Location ?controle=usuario&acao=listar");
+        //    }else{
+        //      echo "ERRO";
+        //    }
+        //  }
+         $this->show();
+       }
+
+
 
         /**
          * No momento do cadastro a senha deve ser salva no banco
@@ -10,15 +28,17 @@ require_once '../model/Usuario.php';
          */
       public function cadastrar(){
          $dados = $this->post();
-         debug($dados);
+         //debug($dados);
          if($dados){
              $usuario = new Usuario();
+             //debug($usuario);
              $novo_usuario = $usuario->setUsuario($dados);
+             debug($novo_usuario);
              if (!empty($novo_usuario)){
                  echo "<script>alert('Usuário cadastrado com sucesso.');</script>";
                  echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=listar'>";
              } else {
-                 echo "erro ao cadastrar";
+                 //echo "erro ao cadastrar";
              }
          }
  //require_once "../view/usuario/cadastrar.php";
@@ -35,31 +55,26 @@ require_once '../model/Usuario.php';
             foreach ($this->lista_usuario as $usuario):
                 $idedit = @$_GET['idedit'];
             endforeach;
-
             $this->lista_usuario2 = $usuariomostrar->getUsuarioUni($idedit);
             $this->show();
             $dados = $this->post();
             if ($dados) {
-                $paciente = new Paciente();
-                $paciente->execUpdatePaciente($dados);
-                echo "<meta http-equiv='refresh' content='0, url=?controle=paciente&acao=listar'>";
-                echo "<script>alert('Paciente alterado com sucesso.');</script>";
+                $usuario = new Usuario();
+                $usuario->update($idedit,$dados);
+                echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=listar'>";
+                echo "<script>alert('Usuario alterado com sucesso.');</script>";
             } else {
                 echo "";
             }
-
           }
 
 
 
            public function listar() {
-           $usuario = new Usuario();
-           //debug($usuario);
-           $this->lista_usuarios = $usuario->getUsuario();
-           //debug($this->lista_usuarios);
-            $this->show();
-
-        }
+             $usuario = new Usuario();
+             $this->lista_usuarios = $usuario->getUsuario();
+             $this->show();
+           }
 
          public function deletar() {
            $usuario = new Usuario();
@@ -68,7 +83,7 @@ require_once '../model/Usuario.php';
            debug($id);
            $usuario->excluir($id);
            $this->show();
-        }
+         }
 
 
 
@@ -78,9 +93,39 @@ require_once '../model/Usuario.php';
          * O Usuário pode alterar somente a sua propria senha.
          */
 
-       public function alterar_senha() {
+      //  public function alterar_senha() {
+      //    $usuario = new Usuario();
+      //    $this->lista_usuario = $usuario->getUsuario();
+       //
+      //    foreach ($this->lista_usuario as $usuario):
+      //        $id = @$_GET['id'];
+      //    endforeach;
+       //
+      //    $this->lista_usuario2 = $usuario->getUsuarioUni($id);
+      //    $this->show();
+      //    $dados = $this->post();
+      //    if ($dados) {
+      //        $usuario = new Usuario();
+      //        $usuario->updateSenha($id,$dados);
+      //        echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=listar'>";
+      //        echo "<script>alert('Senha alterado com sucesso.');</script>";
+      //    } else {
+      //        echo "";
+      //    }
+      //   }
 
-        }
+
+        // public function login(){
+        //   //$this->show();
+        //   if(!empty($_POST)){
+        //   if($this->sessao->login($_POST['nome'], $_POST['senha'])){
+        //   header("Location: ../?controle=usuario&acao=listar");
+        // }else {
+        //   echo "login e/ou senha incorreto(s)!";
+        // }
+        //  }
+        //  $this->show();
+        // }
 
 
     }

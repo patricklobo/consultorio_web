@@ -6,7 +6,11 @@
 
     <div class="panel-body" >
       <form method="post" action="">
-        <input type="hidden" name="id" >
+        <input type="hidden" name="id">
+        <div class="form-group">
+          <label>Usuario</label>
+          <input type="text"  name="usuario" class="form-control" >
+        </div>
         <div class="form-group">
           <label>Paciente</label>
           <input type="text"  name="paciente" class="form-control" >

@@ -33,7 +33,7 @@
             <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
                     <span class="glyphicon glyphicon-user" aria-hidden="true">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+                    <a href="?controle=usuario&acao=senha" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>

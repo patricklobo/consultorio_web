@@ -1,6 +1,19 @@
 <?php
 require_once '../model/Conexao.php';
 require_once '../model/Usuario.php';
+require_once '../model/Sessao.php';
+
+
+$sessao= new Sessao;
+
+//$sessao->verifica();
+// if($controle == "" && $acao == ""){
+//   if($sessao -> verifica()){
+//     header("Location: ?controle=usuario&acao=listar   ");
+//   } else {
+//     header("Location: ?controle=usuario&acao=login");
+//   }
+// }
 
 function debug($array){
   echo "<pre>";

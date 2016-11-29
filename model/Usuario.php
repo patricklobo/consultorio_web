@@ -41,9 +41,14 @@ class Usuario {
       $this->conexao->execSQL($this->sql);
     }
 
-   public function update($id){
-     $this->sql = "UPDATE usuario SET nome='$usuario->nome', email='$usuario->email', senha ='".sha1($usuario->senha)."', alterado='$usuario->alterado'";
+   public function update($id, $usuario){
+     $this->sql = "UPDATE usuario SET nome='$usuario->nome', email='$usuario->email', senha ='".sha1($usuario->senha)."', alterado='$usuario->alterado' WHERE id='$id'";
      $this->conexao->execSQL($this->sql);
+   }
+
+   public function updateSenha($id, $senha){
+     $this->sql = "UPDATE `usuario` SET `senha`='".sha1($senha)."' WHERE id = '$id'";
+      $this->conexao->execSQL($this->sql);
    }
 
 
@@ -59,6 +64,17 @@ class Usuario {
         }
         return $listae;
     }
+
+
+    public function login($usuario, $senha) {
+    $this->sql = "SELECT * FROM usuario WHERE nome='$usuario AND senha='".sha1($senha)."'";
+    $this->conexao->execSQL($this->sql);
+    $lista = [];
+    while ($row = $this->conexao->listarResultados()) {
+       $lista[] = $row;
+    }
+    return $lista;
+  }
 
 }
 ?>

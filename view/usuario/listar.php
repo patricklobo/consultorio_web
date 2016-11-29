@@ -62,12 +62,13 @@
                     </td>
                     <td>
                       <a href="?controle=usuario&acao=editar&idedit=<?=$usuario['id']?>">
-                        <span class="icon-editar glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        <span class="icon-editar glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
                     </td>
                     <td>
                       <a href="?controle=usuario&acao=deletar&id=<?=$usuario['id']?>">
                         <span class="icon-deletar glyphicon glyphicon-trash" aria-hidden="true"></span>
+
                     </a>
                     </td>
                   </tr>
