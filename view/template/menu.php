@@ -9,7 +9,7 @@
 <!--</a>-->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -23,17 +23,51 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="?controle=agendamento&acao=listar">Agendamentos</span></a></li>
-                <li><a href="#">Especialidades</a></li>
-                <li><a href="#">Exemplo1</a></li>
-                <li><a href="#">exemplo2</a></li>
-                <li><a href="?controle=usuario&acao=listar">Usuarios</a></li>
+                <li class=""    ><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agendamentos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?controle=agendamento&acao=cadastrar">Cadastrar</a></li>
+                        <li><a href="?controle=agendamento&acao=listar">Ver Agendamentos</a></li>
+                        <li><a href="?controle=agendamento&acao=buscar">Procurar Agendamento</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacientes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?controle=paciente&acao=cadastrar">Cadastrar</a></li>
+                        <li><a href="?controle=paciente&acao=listar">Gerenciar</a></li>
+                        <!--li role="separator" class="divider"></li>
+                        <li><a href="#">Exemplo</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Exemplo</a></li-->
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuários <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?controle=usuario&acao=cadastrar">Cadastrar</a></li>
+                        <li><a href="?controle=usuario&acao=listar">Gerenciar</a></li>
+                        <!--li role="separator" class="divider"></li>
+                        <li><a href="#">Exemplo</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Exemplo</a></li-->
+                    </ul>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+
                   <li class="dropdown">
                     <span class="glyphicon glyphicon-user" aria-hidden="true">
                     <a href="?controle=usuario&acao=senha" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+      <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -41,9 +75,6 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Separated link</a></li>
                     </ul>
-                </li>
-                <li>
-                    <span class="glyphicon glyphicon-log-out" aria-hidden="true">
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

@@ -1,1 +1,1 @@
-Deletando
+deletando

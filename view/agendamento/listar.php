@@ -9,40 +9,56 @@
       </a>
       </ul>
     </div>
-    <div class="panel-body">
-        <table class="table table-hover">
+<?php
+
+?>
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Consultas agendadas</b></div>
+        </div>
+
+        <table class="table table-striped">
             <tr>
                 <td>
-                     <b>ID</b>
+                    <b>Data/Hora</b>
                 </td>
                 <td>
-                  <b>  Usuario </b>
+                    <b>Paciente</b>
                 </td>
                 <td>
-                  <b>  Paciente </b>
-                 </td>
-                 <td>
-                   <b>Data/Hora</b>
-                 </td>
-                 <td>
-                   <b>Status</b>
-                 </td>
-                 <td>
-                   <b>Data</b>
-                 </td>
-                <td>
-                  <b>Criado</b>
+                    <b>Dia de criação</b>
                 </td>
                 <td>
-                  <b>Alterado</b>
+                    <b>Agendado por</b>
                 </td>
                 <td>
-                  <b>Editar</b>
-                </td>
-                <td>
-                  <b>Excluir</b>
+                    <b>Ultima alteração</b>
                 </td>
             </tr>
+
+            <?php  foreach($this->lista_agendamentos as $agendamento): ?>
+            <tr>
+                <td>
+                    <?=$agendamento['datahora']?>
+                </td>
+                <td>
+                    <?=$agendamento['nomepaciente']?>
+                </td>
+                <td>
+                    <?=$agendamento['datacriado']?>
+                </td>
+                <td>
+                    <?=$agendamento['nomeusuario']?>
+                </td>
+                <td>
+                    <?=$agendamento['dataalterado']?>
+                </td>
+                <?php endforeach;?>
+            </tr>
+
 
             <?php foreach ($this->lista_agendamentos as $agendamento) : ?>
                 <tr>
@@ -83,6 +99,4 @@
                   </tr>
             <?php endforeach; ?>
 
-        </table>
-    </div>
-</div>
+   </table>

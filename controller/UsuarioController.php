@@ -3,28 +3,28 @@ require_once '../model/Sessao.php';
 require_once '../model/Conexao.php';
 require_once '../model/Usuario.php';
 
-    class UsuarioController extends Controller {
+
+class UsuarioController extends Controller {
 
        public function login(){
-        //  //$this->show();
-         $this->sessao = new Sessao();
-        //  $usuario = $_POST['nome'];
-        //  $senha = $_POST['senha'];
-        //  if(!empty($_POST)){
-        //    if($this->sessao->login($usuario, $senha)){
-        //      header("Location ?controle=usuario&acao=listar");
-        //    }else{
-        //      echo "ERRO";
-        //    }
-        //  }
-         $this->show();
-       }
-
-
+        $dados = $this->post();
+        debug($dados);
+        // $usuario = new Usuario();
+        // $user = $usuario->login($dados->nome, $dados->senha);
+        // debug($user);
+        if($dados){
+          $sessao = new Sessao();
+          debug($sessao);
+          $_sessao = $sessao->login($dados->nome, $dados->senha);
+           //echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=listar'>";
+        }
+        debug($_SESSION);
+        $this->show();
+      }
 
         /**
          * No momento do cadastro a senha deve ser salva no banco
-         * criptografada, utilizando funções do tipo "sha1" md5 ou outras.
+         * criptografada, utilizando funções do tipo "sha1", "md5" ou outras.
          */
       public function cadastrar(){
          $dados = $this->post();
@@ -48,6 +48,7 @@ require_once '../model/Usuario.php';
         /**
          * Editar completo, inclusive sua senha
          */
+
         public function editar(){
             $usuariomostrar = new Usuario();
             $this->lista_usuario = $usuariomostrar->getUsuario();
@@ -64,7 +65,7 @@ require_once '../model/Usuario.php';
                 echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=listar'>";
                 echo "<script>alert('Usuario alterado com sucesso.');</script>";
             } else {
-                echo "";
+                echo "ERRO!";
             }
           }
 
@@ -86,12 +87,10 @@ require_once '../model/Usuario.php';
          }
 
 
-
-
-
         /**
          * O Usuário pode alterar somente a sua propria senha.
          */
+
 
       //  public function alterar_senha() {
       //    $usuario = new Usuario();
@@ -126,6 +125,21 @@ require_once '../model/Usuario.php';
         //  }
         //  $this->show();
         // }
+
+        public function alterar_senha() {
+          $dados = $this->post();
+          if(!empty($_POST)){
+               if($_POST['senha'] == $_POST['senha2']){
+                 $usuario = new Usuario();
+                 $user->usuario->updateSenha($id, $dados->senha);
+                 echo "<meta http-equiv='refresh' content='0, url=?controle=usuario&acao=listar'>";
+                 echo "<script>alert('Usuario alterado com sucesso.');</script>";
+               }else{
+                 echo "ERRO!";
+               }
+           }
+          $this->show();
+        }
 
 
     }

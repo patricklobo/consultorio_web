@@ -29,6 +29,9 @@
                 <td>
                   <b>  Email </b>
                  </td>
+                 <td>
+                   <b>  Nivel </b>
+                  </td>
                 <td>
                   <b>Criado</b>
                 </td>
@@ -53,6 +56,9 @@
                     </td>
                     <td>
                         <?=$usuario['email']?>
+                    </td>
+                    <td>
+                        <?=$usuario['nivel']?>
                     </td>
                     <td>
                         <?=$usuario['criado']?>

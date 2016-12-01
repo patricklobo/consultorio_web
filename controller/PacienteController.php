@@ -1,5 +1,6 @@
 <?php
 require_once '../model/Paciente.php';
+require_once '../model/Alerta.php';
 
 
 class PacienteController extends Controller
@@ -12,16 +13,16 @@ class PacienteController extends Controller
         $dados = $this->post();
         if ($dados) {
             $paciente = new Paciente();
-            $novo_paciente = $paciente->setPacienteCadastrar($dados);
+            $novo_paciente = $dados;//$paciente->setPacienteCadastrar($dados);
+            $alerta = new Alerta();
 
-            if (empty($novo_paciente->nome)) {
-                echo "<script>alert('Paciente cadastrado com sucesso.');</script>";
-                echo "<meta http-equiv='refresh' content='0, url=?controle=paciente&acao=listar'>";
+            if (empty($novo_paciente->nome) || empty($novo_paciente->endereco) || empty($novo_paciente->telefone) || empty($novo_paciente->datanasc) || empty($novo_paciente->email)) {
+                $alerta->alertaCamposvazios();
             } else {
-                echo "erro ao cadastrar";
+                $paciente->setPacienteCadastrar($dados);
+                $alerta->alertaCadPaciente();
             }
         }
-        //require_once "../view/paciente/cadastrar.php";
         $this->show();
     }
 
@@ -41,11 +42,15 @@ class PacienteController extends Controller
         $dados = $this->post();
         if ($dados) {
             $paciente = new Paciente();
-            $paciente->execUpdatePaciente($dados);
-            echo "<meta http-equiv='refresh' content='0, url=?controle=paciente&acao=listar'>";
-            echo "<script>alert('Paciente alterado com sucesso.');</script>";
-        } else {
-            echo "";
+            $alerta = new Alerta();
+            if (empty($dados->nome) || empty($dados->endereco) || empty($dados->telefone) || empty($dados->datanasc) || empty($dados->email)) {
+                $alerta->alertaCamposvazios();
+            } else {
+                $paciente->execUpdatePaciente($dados);
+                $alerta->alertaAlterPaciente();
+                echo "<meta http-equiv='refresh' content='2, url=?controle=paciente&acao=listar'>";
+            }
+
         }
 
     }

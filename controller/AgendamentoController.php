@@ -2,17 +2,61 @@
 require_once "../model/Conexao.php";
 require_once "../model/Agendamento.php";
 
- class AgendamentoController extends Controller{
+require_once '../model/Agendamento.php';
+require_once '../model/Paciente.php';
+require_once '../model/Alerta.php';
 
-      public function listar(){
+class AgendamentoController extends Controller
+{
+
+    public function cadastrar()
+    {
+        $alerta = new Alerta();
+        $dados = $this->post();
+        if ($dados) {
+            $agendamento = new Agendamento();
+            $novo_agendamento = $dados;//$agendamento->cadAgendamento($dados);
+
+            if (empty($novo_agendamento->data) || (empty($novo_agendamento->hora) || (empty($novo_agendamento->idpaciente)))) {
+                $alerta->alertaCamposvazios();
+            } else {
+                $agendamento->cadAgendamento($dados);
+                $alerta->alertaCadConsulta();
+            }
+        }
+        $this->show();
+
+    }
+
+    public function deletar()
+    {
+
+
+
+    }
+
+    public function listar()
+    {
+
         $agendamento = new Agendamento();
-        //debug($usuario);
         $this->lista_agendamentos = $agendamento->getAgendamento();
-        //debug($this->lista_usuarios);
-         $this->show();
-      }
+        $this->show();
 
-      public function cadastrar(){
+
+    }
+
+    public function alterar()
+    {
+
+
+
+    }
+
+    public function buscar() {
+
+    }
+
+      public function cadastrar1(){
          //echo "testando";
         $dados = $this->post();
         debug($dados);
@@ -26,17 +70,21 @@ require_once "../model/Agendamento.php";
                 echo "erro ao cadastrar";
             }
         }
-        $this->show();
-      }
+        $dados = $this->post();
+        $alerta = new Alerta();
+        if ($dados){
+            $agendamento = new Agendamento();
+            if (empty($dados->consultapesquisa)) {
+                $alerta->alertaCamposvazios();
+            } else {
+                $this->lista_resultado = $agendamento->getAgendamentoUni($dados);
+            }
+        }
 
 
-    public function deletar($id){
-      $agendamento = new Agendamento();
-      //debug($usuario);
-      $id = $_GET['id'];
-      debug($id);
-      $agendamento->deletar($id);
       $this->show();
+
+
     }
 
 
@@ -64,3 +112,5 @@ require_once "../model/Agendamento.php";
       }
 }
 ?>
+
+}

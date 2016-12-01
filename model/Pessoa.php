@@ -27,4 +27,8 @@ class Pessoa
 
         return $lista;
     }
+
+    public function deletePessoas() {
+
+    }
 }

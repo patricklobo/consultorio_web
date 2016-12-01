@@ -89,7 +89,8 @@
         </td>
     </div>
 </div>
-
+<div class="container">
+<div class="panel panel-default">
 <div class="panel-body" >
     <?php  foreach($this->lista_pacientes2 as $pacientemostrar): ?>
 
@@ -135,4 +136,6 @@
     </form>
 </div>
 <?php endforeach;?>
+</div>
+</div>
 </div>

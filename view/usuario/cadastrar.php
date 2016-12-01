@@ -19,6 +19,10 @@
           <label>Senha</label>
           <input type="password" name="senha" class="form-control" >
         </div>
+        <div class="form-group">
+          <label>Nivel</label>
+          <input type="text"  name="nivel"  class="form-control" >
+        </div>
         <button type="submit" class="btn btn-default">Cadastrar</button>
       </form>
     </div>

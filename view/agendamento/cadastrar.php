@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -15,19 +16,44 @@
           <label>Paciente</label>
           <input type="text"  name="paciente" class="form-control" >
         </div>
+=======
+<?php
+
+?>
+
+
+<div class="panel-body">
+    <form method="post" action="">
+
+>>>>>>> 6c401dd61aba298ca0eeb32deba86d27335b54d6
         <div class="form-group">
-          <label>Data/Hora</label>
-          <input type="text"  name="data_hora" class="form-control" pattern="[09-09-09]{}" >
+            <label>Dia</label>
+            <input class="form-control" name="data" type="date" placeholder="">
         </div>
+
         <div class="form-group">
-          <label>Status</label>
-          <input type="text" name="status" class="form-control" >
+            <label>Hora</label>
+            <input class="form-control" name="hora" type="time" placeholder="">
         </div>
+
+
         <div class="form-group">
-          <label>Data</label>
-          <input type="text" name="data" class="form-control" >
-        </div>
-        <button type="submit" class="btn btn-default">Cadastrar</button>
-      </form>
-    </div>
-  </div>
+            <label>Paciente</label>
+            <?php
+
+            echo "<select class='form-control' name='idpaciente'>";
+                echo "<option value=''> Selecione o paciente...</option>";
+            foreach($this->lista_pacientes3 as $paciente)
+            {
+                echo "<option value=$paciente[id]> $paciente[nome] </option>";
+            }
+
+            echo "</select>";
+            ?>
+
+        </div> </br>
+
+        <button type="submit" class="btn btn-default">Agendar</button>
+    </form>
+</div>
+</div>

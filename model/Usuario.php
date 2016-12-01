@@ -1,15 +1,29 @@
 <?php
 require_once 'Conexao.php';
-class Usuario {
+ class Usuario {
 
-  public function __construct(){
-   $this->conexao = new Conexao();
-   $this->conexao->conectar();
- }
+    public function __construct(){
+      $this->conexao = new Conexao();
+      $this->conexao->conectar();
+    }
 
+    public function nivel($nivel){
+      switch ($nivel) {
+        case '1':
+          return "Básico";
+          break;
 
-  public function getUsuario(){
-      $this->sql = "SELECT id, nome, email, senha, criado, alterado FROM usuario";
+        case '2':
+        return "Administrador";
+        break;
+
+        default:
+          # code...
+          break;
+      }
+    }
+    public function getUsuario(){
+      $this->sql = "SELECT id, nome, email, senha, nivel, criado, alterado FROM usuario";
       $this->conexao->execSQL($this->sql);
       $lista = [];
       while ($row = $this->conexao->listarResultados()) {
@@ -20,14 +34,14 @@ class Usuario {
 
 
     public function setUsuario($usuario) {
-     $this->sql = "INSERT INTO `usuario`(`nome`, `email`, `senha`) VALUES ('$usuario->nome', '$usuario->email', '".sha1($usuario->senha)."')";
+     $this->sql = "INSERT INTO `usuario`(`nome`, `email`, `senha`, `nivel`) VALUES ('$usuario->nome', '$usuario->email', '".sha1($usuario->senha)."', '$usuario->nivel')";
      $this->conexao->execSQL($this->sql);
      //return $this->conexao->getId();
      }
 
 
     public function getUsuarioUni($idedit) {
-        $this->sql = "SELECT id, nome, email, senha, criado, alterado FROM usuario WHERE id='$idedit'";
+        $this->sql = "SELECT id, nome, email, senha, nivel, criado, alterado FROM usuario WHERE id='$idedit'";
         $this->conexao->execSQL($this->sql);
         $listae = [];
         while ($row = $this->conexao->listarResultados()) {
@@ -42,7 +56,7 @@ class Usuario {
     }
 
    public function update($id, $usuario){
-     $this->sql = "UPDATE usuario SET nome='$usuario->nome', email='$usuario->email', senha ='".sha1($usuario->senha)."', alterado='$usuario->alterado' WHERE id='$id'";
+     $this->sql = "UPDATE usuario SET nome='$usuario->nome', email='$usuario->email', senha ='".sha1($usuario->senha)."', nivel='$usuario->nivel', alterado='$usuario->alterado' WHERE id='$id'";
      $this->conexao->execSQL($this->sql);
    }
 
@@ -55,8 +69,8 @@ class Usuario {
 
 
 
- public function mostrarUsuario($idedit){
-        $this->sql = "SELECT id, nome, senha FROM usuario WHERE id='$idedit'";
+   public function mostrarUsuario($idedit){
+        $this->sql = "SELECT id, nome, senha, nivel FROM usuario WHERE id='$idedit'";
         $this->conexao->execSQL($this->sql);
         $listae = [];
         while ($row = $this->conexao->listarResultados()) {
@@ -66,15 +80,18 @@ class Usuario {
     }
 
 
-    public function login($usuario, $senha) {
-    $this->sql = "SELECT * FROM usuario WHERE nome='$usuario AND senha='".sha1($senha)."'";
-    $this->conexao->execSQL($this->sql);
-    $lista = [];
-    while ($row = $this->conexao->listarResultados()) {
-       $lista[] = $row;
-    }
-    return $lista;
-  }
+    public function login($nome, $senha) {
+       $this->sql = "SELECT id, nome, senha FROM usuario WHERE nome='$nome' AND senha='".sha1($senha)."'";
+       $this->conexao->execSQL($this->sql);
+       $lista = [];
+       while ($row = $this->conexao->listarResultados()) {
+          $lista[] = $row;
+       }
+       return $lista;
+   }
+
+
+
 
 }
 ?>
