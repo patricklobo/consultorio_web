@@ -27,9 +27,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agendamentos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?controle=agendamento&acao=cadastrar">Cadastrar</a></li>
-                        <li><a href="?controle=agendamento&acao=listar">Ver Agendamentos</a></li>
-                        <li><a href="?controle=agendamento&acao=buscar">Procurar Agendamento</a></li>
+                        <li><a href="?controle=Agendamento&acao=cadastrar">Cadastrar</a></li>
+                        <li><a href="?controle=Agendamento&acao=listar">Ver Agendamentos</a></li>
+                        <li><a href="?controle=Agendamento&acao=buscar">Procurar Agendamento</a></li>
 
                     </ul>
                 </li>
@@ -37,8 +37,19 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacientes <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?controle=paciente&acao=cadastrar">Cadastrar</a></li>
-                        <li><a href="?controle=paciente&acao=listar">Gerenciar</a></li>
+                        <li><a href="?controle=Paciente&acao=cadastrar">Cadastrar</a></li>
+                        <li><a href="?controle=Paciente&acao=listar">Gerenciar</a></li>
+                        <!--li role="separator" class="divider"></li>
+                        <li><a href="#">Exemplo</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Exemplo</a></li-->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Médicos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?controle=Medico&acao=cadastrar">Cadastrar</a></li>
+                        <li><a href="?controle=Medico&acao=listar">Gerenciar</a></li>
                         <!--li role="separator" class="divider"></li>
                         <li><a href="#">Exemplo</a></li>
                         <li role="separator" class="divider"></li>
@@ -46,28 +57,12 @@
                     </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuários <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="?controle=usuario&acao=cadastrar">Cadastrar</a></li>
-                        <li><a href="?controle=usuario&acao=listar">Gerenciar</a></li>
-                        <!--li role="separator" class="divider"></li>
-                        <li><a href="#">Exemplo</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Exemplo</a></li-->
-                    </ul>
-                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
-                  <li class="dropdown">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true">
-                    <a href="?controle=usuario&acao=senha" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
-      <li><a href="#">Link</a></li>
+                <li><a href="?controle=Usuario&acao=deslogar">Log-out</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>

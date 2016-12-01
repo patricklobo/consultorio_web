@@ -13,7 +13,7 @@ class PacienteController extends Controller
         $dados = $this->post();
         if ($dados) {
             $paciente = new Paciente();
-            $novo_paciente = $dados;//$paciente->setPacienteCadastrar($dados);
+            $novo_paciente = $dados;//$Paciente->setPacienteCadastrar($dados);
             $alerta = new Alerta();
 
             if (empty($novo_paciente->nome) || empty($novo_paciente->endereco) || empty($novo_paciente->telefone) || empty($novo_paciente->datanasc) || empty($novo_paciente->email)) {
@@ -33,12 +33,11 @@ class PacienteController extends Controller
         $pacientemostrar = new Paciente();
         $this->lista_pacientes = $pacientemostrar->getPaciente();
 
-        foreach ($this->lista_pacientes as $paciente):
-            $idedit = @$_GET['idedit'];
-        endforeach;
+        $idedit = @$_GET['idedit'];
+
 
         $this->lista_pacientes2 = $pacientemostrar->mostrarPacienteEditar($idedit);
-        $this->show();
+
         $dados = $this->post();
         if ($dados) {
             $paciente = new Paciente();
@@ -48,10 +47,11 @@ class PacienteController extends Controller
             } else {
                 $paciente->execUpdatePaciente($dados);
                 $alerta->alertaAlterPaciente();
-                echo "<meta http-equiv='refresh' content='2, url=?controle=paciente&acao=listar'>";
+                echo "<meta http-equiv='refresh' content='1, url=?controle=Paciente&acao=listar'>";
             }
 
         }
+        $this->show();
 
     }
 
@@ -65,8 +65,8 @@ class PacienteController extends Controller
     }
 
     /*public function auxLista(){
-          $paciente = new Paciente();
-        $this->lista_pacientes = $paciente->getPaciente();
+          $Paciente = new Paciente();
+        $this->lista_pacientes = $Paciente->getPaciente();
 
         }*/
 
@@ -75,13 +75,13 @@ class PacienteController extends Controller
         //$this->auxLista();
         $paciented = new Paciente();
         $this->lista_pacientes = $paciented->getPaciente();
-        foreach ($this->lista_pacientes as $paciente):
-            $iddelete = @$_GET['id'];
 
-        endforeach;
+        $iddelete = @$_GET['id'];
+
+
 
         $paciented->setPacienteDeletar($iddelete);
-        echo "<meta http-equiv='refresh' content='0, url=?controle=paciente&acao=listar'>";
+        echo "<meta http-equiv='refresh' content='0, url=?controle=Paciente&acao=listar'>";
 
     }
 

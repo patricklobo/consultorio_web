@@ -3,7 +3,18 @@ class Controller {
 
 
     public function show(){
-        require_once "../view/".CONTROLE."/".ACAO.".php";
+
+        if (isset($_SESSION['user_session']) && isset($_SESSION['pwd_session'])) {
+
+            require_once "../view/".CONTROLE."/".ACAO.".php";
+
+        } else {
+
+            echo "<meta http-equiv='refresh' content='0, ?controle=Usuario&acao=logar'>";
+        }
+
+
+
     }
 
     ////////////////////////////////////////////////////////////////////////

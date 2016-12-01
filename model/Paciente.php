@@ -64,7 +64,7 @@ private $sql = null;
     }
 
     public function getPacienteSelect() {
-        $this->sql = "SELECT id, nome FROM paciente";
+        $this->sql = "SELECT id, nome FROM paciente ORDER BY nome";
         $this->conexao->execSQL($this->sql);
         $lista = [];
         while ($row = $this->conexao->listarResultados()) {
